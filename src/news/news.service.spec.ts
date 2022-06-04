@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import axios from 'axios';
 import { NewsService } from './news.service';
-import { newStories, storyDetails } from '../../test/news/utils';
+import { newStories, storyDetails } from '../../test/utils';
 import { AppModule } from '../app.module';
 
 describe('NewsService', () => {
@@ -15,7 +15,11 @@ describe('NewsService', () => {
     newsService = module.get<NewsService>(NewsService);
   });
 
-  describe('news (GET)', () => {
+  describe('NewsService', () => {
+    it('NewsService - should be defined', () => {
+      expect(newsService).toBeDefined();
+    });
+
     it('should get top 10 most occurring words in the titles of the last 25 stories', async () => {
       jest
         .spyOn(axios, 'get')

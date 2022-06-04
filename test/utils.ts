@@ -1,4 +1,4 @@
-import { ItemResponse } from '../../src/news/types';
+import { ItemResponse } from '../src/news/types';
 import { AxiosResponse } from 'axios';
 import { range } from 'lodash';
 

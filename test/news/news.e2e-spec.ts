@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import axios from 'axios';
 import { AppModule } from '@src/app.module';
-import { newStories, storyDetails } from './utils';
+import { newStories, storyDetails } from '../utils';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -17,7 +17,7 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  describe('News', () => {
+  describe('NewsController (GET)', () => {
     it('should get top 10 most occurring words in the titles of the last 25 stories', async () => {
       jest
         .spyOn(axios, 'get')
