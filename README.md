@@ -12,10 +12,14 @@
 1. Install the project dependencies
 1. Run the application
 
+## Documenttaion
+
+- After running the application, you can visit (http://localhost:3000/api) on your browser for the Swagger documentation
+
 ## Project Clone
 
 ```bash
-$ git clone git clone https://github.com/chrischeks/hackernews-top10.git
+$ git clone git clone (https://github.com/chrischeks/hackernews-top10.git)
 
 ```
 

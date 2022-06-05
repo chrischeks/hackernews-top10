@@ -1,4 +1,4 @@
-### Top 10 most occurring words in the titles of the last 25 stories (method: top10WordsInTitlesOfLast25Stories())
+### Top 10 most occurring words in the titles of the last 25 stories
 
 #### Implemented? Yes.
 
