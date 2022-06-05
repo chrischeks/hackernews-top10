@@ -8,14 +8,15 @@
 1. Install Yarn package manager [Yarn] (https://classic.yarnpkg.com/lang/en/docs/install) - You can delete the project's yarn.lock and use NPM instead
 1. Install NestJs [NestJS] (https://docs.nestjs.com/)
 1. A code editor [VS code] (https://code.visualstudio.com/download)
-1. Clone the repository [Github] (https://github.com/chrischeks/autochek-assessment.git)
+1. Clone the repository [Github] (git clone https://github.com/chrischeks/hackernews-top10.git)
 1. Install the project dependencies
 1. Run the application
 
 ## Project Clone
 
 ```bash
-$ git clone https://github.com/chrischeks/autochek-assessment.git
+$ git clone git clone https://github.com/chrischeks/hackernews-top10.git
+
 ```
 
 ## Installation
