@@ -11,11 +11,3 @@ export class ItemResponse {
   text: string;
   url: string;
 }
-
-export enum ItemType {
-  Story = 'story',
-  Coment = 'comment',
-  Poll = 'poll',
-  Job = 'job',
-  Pollopt = 'pollopt',
-}

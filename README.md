@@ -1,5 +1,7 @@
 ## Description
 
+- The description of the endpoint implemented can be found in a README.md file located in the news (src/news) directory, and the reason why others were not implemented can also be found there too.
+
 ### To run this project you need to take the following steps:
 
 1. Install NodeJS [NodeJS](https://nodejs.org/en/).

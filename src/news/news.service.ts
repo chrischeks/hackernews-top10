@@ -17,7 +17,7 @@ export class NewsService {
     this.logger.info(
       'Start fetching top 10 most occurring words in the titles of the last 25 stories',
     );
-    const top10 = 10;
+
     try {
       const response = await this.apiService.hackerNews(
         '/newstories.json?print=pretty',
@@ -42,33 +42,13 @@ export class NewsService {
       for (const story of newStories) {
         const storyTitle = story.data?.title;
         if (storyTitle) {
-          titles.push(storyTitle.replace(/[^a-zA-Z ]/g, ''));
+          titles.push(storyTitle.replace(/[^a-zA-Z ]/g, '').toLowerCase());
         }
       }
 
       this.logger.info('Done getting story titles');
 
-      const wordCount = {};
-      for (const word of titles.join(' ').split(' ')) {
-        const lowercaseWord = word.toLowerCase();
-        if (lowercaseWord) {
-          wordCount[lowercaseWord]
-            ? wordCount[lowercaseWord]++
-            : (wordCount[lowercaseWord] = 1);
-        }
-      }
-
-      this.logger.info('Done getting word count');
-
-      const wordCountArray = Object.keys(wordCount).map((key) => [
-        key,
-        wordCount[key],
-      ]);
-      wordCountArray.sort((a, b) => b[1] - a[1]);
-
-      const top10Words: string[] = wordCountArray
-        .slice(0, top10)
-        .map((item) => item[0]);
+      const top10Words = await this.retrieveTop10Words(titles);
 
       this.logger.info(
         'Finished fetching top 10 most occurring words in the titles of the last 25 stories',
@@ -80,10 +60,27 @@ export class NewsService {
     }
   }
 
-  // async top10WordsInTitlesOfLastWeekPosts() {
-  //     const response = await this.apiService.hackerNews('/newstories.json?print=pretty');
+  async retrieveTop10Words(titles: string[]): Promise<string[]> {
+    const wordCount = {};
+    for (const word of titles.join(' ').split(' ')) {
+      //Ensures empty strings are not counted
+      if (word) {
+        wordCount[word] ? wordCount[word]++ : (wordCount[word] = 1);
+      }
+    }
 
-  // }
+    this.logger.info('Done getting word-count');
 
-  // async top10WordsInTitlesOfLast600StoriesOfUsers() {}
+    const wordCountArray = Object.keys(wordCount).map((key) => [
+      key,
+      wordCount[key],
+    ]);
+    wordCountArray.sort((a, b) => b[1] - a[1]);
+
+    const top10Words: string[] = wordCountArray
+      .slice(0, 10)
+      .map((item) => item[0]);
+
+    return top10Words;
+  }
 }
